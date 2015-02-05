@@ -1,9 +1,6 @@
-FROM phusion/baseimage:0.9.11
+FROM phusion/baseimage:0.9.16
 MAINTAINER needo <needo@superhero.org>
 ENV DEBIAN_FRONTEND noninteractive
-
-# Set correct environment variables
-ENV HOME /root
 
 # Use baseimage-docker's init system
 CMD ["/sbin/my_init"]
@@ -18,6 +15,9 @@ RUN apt-get update -q
 
 # Install Dependencies
 RUN apt-get install -qy python python-cheetah ca-certificates wget unrar
+
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install SickRage 0.2.1 (2014-10-22)
 RUN mkdir /opt/sickrage

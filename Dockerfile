@@ -3,7 +3,7 @@ MAINTAINER needo <needo@superhero.org>
 ENV DEBIAN_FRONTEND noninteractive
 
 # Set correct environment variables		
--ENV HOME /root
+ENV HOME /root
 
 # Use baseimage-docker's init system
 CMD ["/sbin/my_init"]

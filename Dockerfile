@@ -1,6 +1,9 @@
-FROM phusion/baseimage:0.9.16
+FROM phusion/baseimage:0.9.17
 MAINTAINER needo <needo@superhero.org>
 ENV DEBIAN_FRONTEND noninteractive
+
+# Set correct environment variables		
+-ENV HOME /root
 
 # Use baseimage-docker's init system
 CMD ["/sbin/my_init"]
@@ -21,8 +24,8 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install SickRage 0.2.1 (2014-10-22)
 RUN mkdir /opt/sickrage
-RUN wget https://github.com/SiCKRAGETV/SickRage/archive/v4.0.9.tar.gz -O /tmp/v4.0.9.tar.gz
-RUN tar -C /opt/sickrage -xvf /tmp/v4.0.9.tar.gz --strip-components 1
+RUN wget https://github.com/SiCKRAGETV/SickRage/archive/v4.0.9.tar.gz -O /tmp/v4.0.49.tar.gz
+RUN tar -C /opt/sickrage -xvf /tmp/v4.0.49.tar.gz --strip-components 1
 RUN chown nobody:users /opt/sickrage
 
 EXPOSE 8081
